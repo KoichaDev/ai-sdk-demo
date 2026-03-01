@@ -1,0 +1,19 @@
+{
+  "name": "vue-school-ai-sdk-course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": ">=25.7.0"
+  },
+  "scripts": {
+    "dev": "tsx --env-file=.env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^25.3.3",
+    "tsx": "^4.21.0"
+  }
+}
