@@ -15,6 +15,7 @@
   "description": "",
   "dependencies": {
     "@ai-sdk/google": "^3.0.34",
+    "@ai-sdk/mcp": "^1.0.22",
     "@ai-sdk/openai-compatible": "^2.0.31",
     "@types/node": "^25.3.3",
     "ai": "^6.0.105",
