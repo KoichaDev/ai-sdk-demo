@@ -6,12 +6,20 @@ import {
   smoothStream,
   stepCountIs,
   streamText,
+  wrapLanguageModel,
 } from "ai";
 import { z } from "zod";
 import { db, schema } from "hub:db";
 import { and, eq } from "drizzle-orm";
 import type { UIMessage } from "ai";
+
 import { google } from "@ai-sdk/google";
+import { devToolsMiddleware } from "@ai-sdk/devtools";
+
+const model = wrapLanguageModel({
+  model: google("gemini-2.5-flash"),
+  middleware: devToolsMiddleware(),
+});
 
 defineRouteMeta({
   openAPI: {
@@ -81,7 +89,7 @@ export default defineEventHandler(async (event) => {
   const stream = createUIMessageStream({
     execute: async ({ writer }) => {
       const result = streamText({
-        model: google("gemini-2.5-flash"),
+        model,
         system: `You are a knowledgeable and helpful AI assistant. ${session.user?.username ? `The user's name is ${session.user.username}.` : ""} Your goal is to provide clear, accurate, and well-structured responses.
 
 **FORMATTING RULES (CRITICAL):**
